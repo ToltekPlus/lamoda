@@ -1,0 +1,39 @@
+@import "user-action"
+.new-products
+  margin: $block-margin 0
+  .new-product
+    box-sizing: border-box
+    border-radius: 15px 15px 0 0
+    z-index: 100
+    min-height: 450px
+    &:hover
+      transition-delay: 100ms
+      transition-property: box-shadow
+      padding: 15px
+      border-radius: 10px
+      box-shadow: 0 0 15px #d3d3d3
+      .user-action
+        display: flex
+        flex-direction: row
+        vertical-align: middle
+        justify-content: space-between
+        z-index: 1000
+    a
+      cursor: pointer
+      .new-product__name
+        color: $font-color
+        margin-top: 5px
+        font-size: 0.8em
+      .new-product__price
+        margin-top: 5px
+        color: $font-link
+        font-size: 1em
+        font-weight: 900
+        .before-the-discount
+          color: $font-color
+          font-size: 0.7em
+          font-weight: 200
+          text-decoration: line-through
+      .new-product__category
+        font-size: 0.8em
+        color: $font-color-details
