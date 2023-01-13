@@ -1,0 +1,17 @@
+{
+  "name": "ALamoda",
+  "version": "1.0.0",
+  "description": "Lamoda site redesign",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "npm i nodemon -g",
+    "start": "nodemon -L index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Toktek Web Group",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
