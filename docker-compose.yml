@@ -25,7 +25,7 @@ services:
       - '3306:3306'
     volumes:
       - my-db:/var/lib/mysql
-      - ./schema.sql:/db/dump/init.sql
+      - .:/db/dump/init.sql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -50,9 +50,11 @@ services:
       - redis
 
   php:
-    image: php:apache
+    build: /php
+    links:
+      - db
     volumes:
-      - ./php:/var/www/html
+      - .:/var/www/html
 
   redis:
     image: redis:alpine
