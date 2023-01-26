@@ -3,7 +3,7 @@ name: backend
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the dev branch
-  [push, pull_request]
+  [push, pull_request, release, ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -51,6 +51,8 @@ jobs:
 
       - name: Create test database
         run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS lamoda;'
+        
+        working-directory: ./php/services/
 
       - name: Install dependencies for PHP 8
         if: matrix.php-versions >= '8.0'
