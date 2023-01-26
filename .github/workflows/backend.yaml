@@ -26,6 +26,7 @@ jobs:
         env:
           MYSQL_DATABASE: lamoda
           MYSQL_ROOT_PASSWORD: password
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
         ports:
           - 33306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -54,9 +55,7 @@ jobs:
         run: sudo systemctl start mysql
 
       - name: Create test database
-        run: mysql -h 127.0.0.1 -u root -p password -e 'CREATE DATABASE IF NOT EXISTS lamoda;'
-
-        working-directory: ./php/services/
+        run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS lamoda;'
 
       - name: Install dependencies for PHP 8
         if: matrix.php-versions >= '8.0'
