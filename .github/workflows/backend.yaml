@@ -25,10 +25,10 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_DATABASE: lamoda
-          MYSQL_ROOT_USER: root
           MYSQL_ROOT_PASSWORD: password
         ports:
           - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -54,8 +54,8 @@ jobs:
         run: sudo systemctl start mysql
 
       - name: Create test database
-        run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS lamoda;'
-        
+        run: mysql -h 127.0.0.1 -u root -p password -e 'CREATE DATABASE IF NOT EXISTS lamoda;'
+
         working-directory: ./php/services/
 
       - name: Install dependencies for PHP 8
