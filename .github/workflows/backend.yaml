@@ -5,6 +5,10 @@ on:
   # Triggers the workflow on push or pull request events but only for the dev branch
   [push, pull_request, release, ]
 
+defaults:
+  run:
+    working-directory: ./php/services
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -21,7 +25,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_DATABASE: lamoda
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: password
           MYSQL_ALLOW_EMPTY_PASSWORD: true
         ports:
           - 33306:3306
@@ -61,8 +65,11 @@ jobs:
       - name: Copy .env
         run: cp .env.example .env
 
+      - name: Copy phinx config
+        run: cp -rf phinx.dev.json phinx.json
+
       - name: Run migrate
-        run: ./vendor/bin/phinx migrate
+        run: vendor/bin/phinx migrate
 
       - name: Run seeders
-        run: ./vendor/bin/phinx seed:run -s UserSeeder -s AccountSeeder -s AccountUserSeeder
+        run: vendor/bin/phinx seed:run -s UserSeeder -s AccountSeeder -s AccountUserSeeder
