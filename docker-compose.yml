@@ -24,8 +24,7 @@ services:
     ports:
       - '3306:3306'
     volumes:
-      - my-db:/var/lib/mysql
-      - .:/db/dump/init.sql
+      - .:/php/db/dump/init.sql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -34,6 +33,12 @@ services:
     environment:
       MYSQL_USERNAME: 'root'
       MYSQL_ROOT_PASSWORD: 'password'
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u root --password=password
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 55
 
   nodejs:
     build: /nodejs

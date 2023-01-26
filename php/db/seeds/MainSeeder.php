@@ -5,11 +5,13 @@ use Phinx\Seed\AbstractSeed;
 
 class MainSeeder extends AbstractSeed
 {
+    // TODO realization load seed
+    /*
     protected $seedClasses = [
         UserSeeder::class,
         AccountSeeder::class,
         AccountUserSeeder::class
-    ];
+    ];*/
 
     /**
      * Run Method.
@@ -21,10 +23,11 @@ class MainSeeder extends AbstractSeed
      */
     public function run(): void
     {
+        /*
         foreach ($this->seedClasses as $seedClass) {
             $seeder = new $seedClass;
-            $seeder->setAdapter($this->getAdapter()); // this is required to set the database connection
+            $seeder->setAdapter($this->getAdapter());
             $seeder->run();
-        }
+        }*/
     }
 }
