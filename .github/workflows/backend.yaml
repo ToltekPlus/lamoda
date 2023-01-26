@@ -25,7 +25,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_DATABASE: lamoda
-          MYSQL_ROOT_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: root
           MYSQL_ALLOW_EMPTY_PASSWORD: true
         ports:
           - 33306:3306
