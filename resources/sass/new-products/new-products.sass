@@ -6,11 +6,13 @@
     border-radius: 15px 15px 0 0
     z-index: 100
     min-height: 450px
+    @media (max-width: 770px)
+      height: 485px
     &:hover
       transition-delay: 100ms
       transition-property: box-shadow
-      padding: 15px
-      border-radius: 10px
+      padding: 10px
+      border-radius: 20px
       box-shadow: 0 0 15px #d3d3d3
       .user-action
         display: flex
@@ -18,6 +20,8 @@
         vertical-align: middle
         justify-content: space-between
         z-index: 1000
+    img
+      border-radius: 15px
     a
       cursor: pointer
       .new-product__name
@@ -37,3 +41,8 @@
       .new-product__category
         font-size: 0.8em
         color: $font-color-details
+.new-device
+  display: flex
+  @media (max-width: 770px)
+    display: grid
+    grid-template-columns: 50% 50%

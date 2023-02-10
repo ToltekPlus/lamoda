@@ -1,5 +1,16 @@
-@import "user-action"
-.popular-products
+.discount
+    background-color: $discount
+    position: absolute
+    display: inline
+    //left: calc(187px - 39.05px)
+    transform: translateX(-100%)
+    padding: 2.5px 10px
+    border-radius: 0 15px 0 15px
+    color: $white
+    h6
+        font-weight: bold
+
+.discount-products
   margin: $block-margin 0
   .product
     box-sizing: border-box
@@ -7,6 +18,7 @@
     z-index: 100
     min-height: 450px
     @media (max-width: 770px)
+      height: 485px
       height: 485px
     &:hover
       transition-delay: 100ms
@@ -22,13 +34,13 @@
         z-index: 1000
     a
       cursor: pointer
-      .popular-product__name
+      .discount-product__name
         color: $font-color
         margin-top: 5px
         font-size: 0.8em
-      .popular-product__price
+      .discount-product__price
         margin-top: 5px
-        color: $font-link
+        color: $font-link-hover
         font-size: 1em
         font-weight: 900
         .before-the-discount
@@ -36,12 +48,10 @@
           font-size: 0.7em
           font-weight: 200
           text-decoration: line-through
-      .popular-product__category
+      .discount-product__category
         font-size: 0.8em
         color: $font-color-details
-.cloth
-  border-radius: 15px
-.popular-device
+.discount-device
   display: flex
   @media (max-width: 770px)
     display: grid
