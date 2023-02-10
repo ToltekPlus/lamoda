@@ -36,7 +36,7 @@ services:
       MYSQL_ROOT_PASSWORD: 'password'
 
   nodejs:
-    build: /nodejs
+    build: ./nodejs
     environment:
       NODE_ENV: production
     working_dir: /home/app
