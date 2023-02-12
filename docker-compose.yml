@@ -55,7 +55,7 @@ services:
       - redis
 
   php:
-    build: /php
+    build: ./php
     links:
       - db
     volumes:
