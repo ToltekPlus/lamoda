@@ -22,36 +22,13 @@ header
     transition: all 1s ease-out
     position: absolute
     top: 12.75px
-    @media (min-width: 770px)
-      display: none
-  .div
-    @media (min-width: 770px)
-      display: block !important
   .hamburger:hover
     .second-line
       transform: rotate(45deg)
     .first-line
-      //margin-top: 11.6666666667px
       position: relative
       top: 17.5px
       transform: rotate(-45deg)
     .third-line
       opacity: 0
   @import "navbar"
-.navbar
-  @media (max-width: 770px)
-    display: none  
-.user-data
-  @media (max-width: 770px)
-    display: none !important
-.navigation-list
-  @media (max-width: 770px)
-    display: none !important
-.navigation
-  ul
-    @media (max-width: 770px)
-      display: grid
-      grid-template-columns: 20% 20% 20% 20% 20%
-.column.is-4, .column.is-4-tablet
-    @media screen and (min-width: 769px), print
-      width: auto  
