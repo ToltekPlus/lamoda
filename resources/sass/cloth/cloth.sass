@@ -20,12 +20,12 @@
 .about
     border: 2px #c8c8c8 solid
     margin-top: 20px
-    padding: 15px
+    padding: 30px
     border-radius: 1rem
 .rewiew
     border: 2px #c8c8c8 solid
     margin-top: 20px
-    padding: 15px
+    padding: 30px
     border-radius: 1rem
 .rewiew__cost
     color: #c8c8c8
@@ -65,10 +65,6 @@
 .color:hover
     outline: 4px solid #c8c8c8
     outline-offset: -4px
-.color:first-child
-    margin-left: 0
-    outline: 4px solid $font-link-hover
-    outline-offset: -4px
 .sizes
     display: flex
     width: 80%
@@ -85,8 +81,6 @@
     border-radius: 10px
 .size:hover
     background: #b3b3b3
-.size:first-child
-    background: $font-link-hover
 .to-cart
     border: none
     background: $font-link-hover
@@ -96,6 +90,9 @@
     height: 56.4px
     border-radius: 10px
     font-size: 20px
+    transition: .2s ease
+    &:hover
+        background: #c4002a
 .to-favorite
     height: 56.4px
     width: 56.4px
@@ -106,8 +103,12 @@
     background: #b3b3b3
     box-shadow: none
     color: white
-    svg
-        fill: $font-link-hover
+    transition: .2s ease
+    &:hover
+        background: #929292
+    ion-icon[name="heart-outline"]
+        position: relative
+        top: 2px
 .buttons
     height: 56.4px
     align-items: center
@@ -115,16 +116,20 @@
     margin-top: 20px
 .about__more__item
     display: flex
+.about__more__item__desc
+    margin-left: auto
+    white-space: nowrap
+    color: $font-color
 .about__more__item-name
     display: flex
     align-items: flex-end
-    &:after
-        content: ''
-        width: 200px
-        background: #b3b3b3
-        margin-bottom: 5px
-        display: flex
-        height: 1px
+    //&:`
+    //    content: ''
+    //    width: 200px
+    //    background: #b3b3b3
+    //    margin-bottom: 5px
+    //    display: flex
+    //    height: 1px
 .path
     a
         color: $font-color-details
@@ -147,3 +152,73 @@
     align-items: center
     justify-content: center
     margin-top: 10px
+label[for="color1"] .color
+    margin-left: 0
+.size__choiser
+    input[type="radio"]:checked + label div
+        background: $font-link-hover
+    div
+        color: #fff
+    input[type="radio"]
+        display: none
+
+.color__choiser
+    input[type="radio"]:checked + label img
+        outline: 4px solid $font-link-hover
+        outline-offset: -4px
+    input[type="radio"]
+        display: none
+ion-icon[name="star"]
+    color: #f58019
+    position: relative
+    top: 2px
+.rewiew__people
+    ion-icon[name="star"]
+        color: #f58019
+        position: relative
+        top: 7.5px
+        margin-left: 10px
+.delimiter
+    width: 100%
+    border-bottom: 1.5px solid $font-color-details
+    position: relative
+    bottom: 5px
+ion-icon[name="car-sport-outline"]
+    position: relative
+    top: 2px
+    margin-right: 5px
+.sizes__table
+    position: absolute
+    display: none
+    opacity: 0
+    transition: .2s ease
+    background: white
+    box-shadow: 0 0 7px #000
+    padding: 5px 15px 15px 15px
+    z-index: 9999
+    border-radius: 1rem
+    &::after
+        position: relative
+        top: 12px
+.sizes__table-to
+    position: relative
+    top: 10px
+    display: initial
+    //.sizes__table-hover:hover~.sizes__table
+    //    color: white
+.path
+    a:hover
+        color: #3d3d3d
+ion-icon[name="chevron-forward-outline"]
+    color: #6c6c6c
+    position: relative
+    top: 2px
+    margin: 0 15px
+.popular-products
+    margin: 5px 0
+.sizes__table-to:hover~.sizes__table, .sizes__table:hover
+  display: block
+  opacity: 1
+  transition: .2s ease
+.rewiew__people:last-child
+    background: black

@@ -8,9 +8,24 @@
       a
         padding-bottom: 5px
         color: $font-color
+        position: relative
+        cursor: pointer
+        line-height: 1
+        text-decoration: none
         &:hover
           color: $font-link-hover
-          border-bottom: 2px solid $font-link-hover
+        &::after
+          display: block
+          position: absolute
+          left: 0
+          width: 0
+          height: 2px
+          background-color: $font-link-hover
+          content: ""
+          transition: width 0.3s ease-out
+        &:hover::after,
+        &:focus::after
+          width: 100%
   .input
     background-color: #F1F1F1
     font-size: 1em
@@ -34,3 +49,6 @@
         fill: $font-color
         &:hover
           color: $font-link-hover
+.has-icons-left
+  width: 350px
+  margin-left: 25px
