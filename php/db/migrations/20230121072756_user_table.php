@@ -27,7 +27,8 @@ final class UserTable extends AbstractMigration
     {
         $table = $this->table('users');
 
-        $table->addColumn('email', 'string', ['comment' => 'Почта пользователя'])
+
+        $table->addColumn('phone', 'char', ['comment' => 'Телефон пользователя'])
             ->addColumn('password', 'string', ['comment' => 'Пароль пользователя'])
             ->addTimestamps()
             ->addColumn('last_at', 'datetime', ['comment' => 'Последнее посещение'])
