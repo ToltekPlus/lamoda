@@ -10,5 +10,3 @@
     header("HTTP/1.1 200 Success");
 
     echo json_encode($db);
-
-?>
