@@ -50,8 +50,7 @@
 .navigation
   ul
     @media (max-width: 770px)
-      display: grid
-      grid-template-columns: 20% 20% 20% 20% 20%
+      display: flex
 .column.is-4, .column.is-4-tablet
     @media screen and (min-width: 769px), print
       //width: auto 
@@ -80,4 +79,14 @@ source
     display: grid
 .search
   @media (max-width: 1409px)
+    display: none
+.navigation-list-clothes
+  .columns
+    @media (max-width: 770px)
+      width: max-content
+      margin-bottom: 0
+  @media (max-width: 770px)
+    overflow-x: auto
+.hamburger__menu
+  @media (min-width: 771px)
     display: none
