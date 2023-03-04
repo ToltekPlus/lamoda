@@ -32,6 +32,10 @@ final class AccountTable extends AbstractMigration
             ->addColumn('second_name', 'string', ['comment' => 'Фамилия пользователя'])
             ->addColumn('patronymic', 'string', ['comment' => 'Отчетсво'])
             ->addColumn('userpic', 'string', ['comment' => 'Юзерпик пользователя'])
+            ->addColumn('user_role_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ роли пользователя'])
+            ->addForeignKey('user_role_id', 'user_roles', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
+            ->addColumn('gender_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ гендера'])
+            ->addForeignKey('gender_id', 'genders', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addTimestamps()
             ->save();
     }
