@@ -1,0 +1,14 @@
+{
+  "men": {
+    "link": "/men",
+    "text": "Мужчинам"
+  },
+  "women": {
+    "link": "/women",
+    "text": "Женщинам"
+  },
+  "child": {
+    "link": "/children",
+    "text": "Детям"
+  }
+}
