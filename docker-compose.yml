@@ -12,8 +12,8 @@ services:
     stdin_open: true
     tty: true
     environment:
-      - HOST = 0.0.0.0
-      - CHOKIDAR_USEPOLLING = true
+      - HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
     depends_on:
       - php
       - nodejs
@@ -45,11 +45,11 @@ services:
       retries: 55
 
   nodejs:
-    build: /nodejs
+    build: ./nodejs
     environment:
-      NODE_ENV: production
-      HOST: 0.0.0.0
-      CHOKIDAR_USEPOLLING: true
+     - NODE_ENV=production
+     - HOST=0.0.0.0
+     - CHOKIDAR_USEPOLLING=true
     working_dir: /home/app
     restart: always
     volumes:
@@ -61,7 +61,7 @@ services:
       - redis
 
   php:
-    build: /php
+    build: ./php
     links:
       - db
     volumes:
