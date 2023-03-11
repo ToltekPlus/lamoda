@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class SubcategoryTable extends AbstractMigration
+final class DesignColorTable extends AbstractMigration
 {
     public function up(): void
     {
-        $exists = $this->hasTable('subcategories');
+        $exists = $this->hasTable('design_colors');
         if ($exists) {
-            $this->table('subcategories')->drop()->save();
+            $this->table('design_colors')->drop()->save();
         }
     }
     /**
@@ -25,10 +25,12 @@ final class SubcategoryTable extends AbstractMigration
      */
     public function change(): void
     {
-        $table = $this->table('subcategories');
+        $table = $this->table('design_colors');
         
-        $table->addColumn('category_id', 'integer', ['comment' => 'Ключ категории'])
-            ->addForeignKey('category_id', 'categories', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
+        $table->addColumn('color_id', 'integer', ['comment' => 'Ключ цвета'])
+            ->addForeignKey('color_id', 'colors', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
+            ->addColumn('design_id', 'integer', ['comment' => 'Ключ узора'])
+            ->addForeignKey('design_id', 'designes', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addTimestamps()
             ->create();
     }
