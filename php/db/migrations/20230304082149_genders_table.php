@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class GenderTable extends AbstractMigration
+final class GendersTable extends AbstractMigration
 {
     public function up(): void
     {

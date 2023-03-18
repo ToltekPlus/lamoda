@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class StyleTable extends AbstractMigration
+final class StylesTable extends AbstractMigration
 {
     public function up(): void
     {

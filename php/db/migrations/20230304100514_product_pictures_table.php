@@ -27,9 +27,9 @@ final class ProductPicturesTable extends AbstractMigration
     {
         $table = $this->table('product_pictures');
         
-        $table->addColumn('picture_id', 'integer', ['comment' => 'Ключ картинки'])
+        $table->addColumn('picture_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ картинки'])
             ->addForeignKey('picture_id', 'pictures', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
-            ->addColumn('product_id', 'integer', ['comment' => 'Ключ продукта'])
+            ->addColumn('product_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ продукта'])
             ->addForeignKey('product_id', 'products', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addTimestamps()
             ->create();

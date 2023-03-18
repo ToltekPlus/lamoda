@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class ColorTable extends AbstractMigration
+final class ColorsTable extends AbstractMigration
 {
     public function up(): void
     {

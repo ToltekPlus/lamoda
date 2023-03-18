@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class PictureTable extends AbstractMigration
+final class PicturesTable extends AbstractMigration
 {
     public function up(): void
     {

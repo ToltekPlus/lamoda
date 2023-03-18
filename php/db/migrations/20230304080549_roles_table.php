@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class RoleTable extends AbstractMigration
+final class RolesTable extends AbstractMigration
 {
     public function up(): void
     {

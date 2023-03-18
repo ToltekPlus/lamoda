@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class SubcategoryTable extends AbstractMigration
+final class SubcategoriesTable extends AbstractMigration
 {
     public function up(): void
     {
@@ -27,7 +27,7 @@ final class SubcategoryTable extends AbstractMigration
     {
         $table = $this->table('subcategories');
         
-        $table->addColumn('category_id', 'integer', ['comment' => 'Ключ категории'])
+        $table->addColumn('category_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ категории'])
             ->addForeignKey('category_id', 'categories', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addTimestamps()
             ->create();

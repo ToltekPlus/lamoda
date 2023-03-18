@@ -27,9 +27,9 @@ final class UserRolesTable extends AbstractMigration
     {
         $table = $this->table('user_roles');
         
-        $table->addColumn('user_id', 'integer', ['comment' => 'Ключ пользователя'])
+        $table->addColumn('user_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ пользователя'])
             ->addForeignKey('user_id', 'users', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
-            ->addColumn('role_id', 'integer', ['comment' => 'Ключ роли'])
+            ->addColumn('role_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ роли'])
             ->addForeignKey('role_id', 'roles', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addTimestamps()
             ->create();

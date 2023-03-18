@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class CategoryTable extends AbstractMigration
+final class CategoriesTable extends AbstractMigration
 {
     public function up(): void
     {

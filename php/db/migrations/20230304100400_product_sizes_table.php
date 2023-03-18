@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class ProductSizeTable extends AbstractMigration
+final class ProductSizesTable extends AbstractMigration
 {
     public function up(): void
     {
@@ -27,7 +27,7 @@ final class ProductSizeTable extends AbstractMigration
     {
         $table = $this->table('product_sizes');
         
-        $table->addColumn('product_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ продукта'])
+        $table->addColumn('product_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ продукта'])
         ->addForeignKey('product_id', 'products', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
         ->addColumn('size', 'string', ['comment' => 'Размер'])
         ->addForeignKey('size_id', 'sizes', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])

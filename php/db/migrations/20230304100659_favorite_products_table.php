@@ -27,9 +27,9 @@ final class FavoriteProductsTable extends AbstractMigration
     {
         $table = $this->table('favorite_products');
         
-        $table->addColumn('user_account_id', 'integer', ['comment' => 'Ключ аккаунта пользователя'])
+        $table->addColumn('user_account_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ аккаунта пользователя'])
             ->addForeignKey('user_account_id', 'users_account', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
-            ->addColumn('product_id', 'integer', ['comment' => 'Ключ продукта'])
+            ->addColumn('product_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ продукта'])
             ->addForeignKey('product_id', 'products', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addTimestamps()
             ->create();

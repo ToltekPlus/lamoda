@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class DesignColorTable extends AbstractMigration
+final class DesignColorsTable extends AbstractMigration
 {
     public function up(): void
     {
@@ -27,9 +27,9 @@ final class DesignColorTable extends AbstractMigration
     {
         $table = $this->table('design_colors');
         
-        $table->addColumn('color_id', 'integer', ['comment' => 'Ключ цвета'])
+        $table->addColumn('color_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ цвета'])
             ->addForeignKey('color_id', 'colors', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
-            ->addColumn('design_id', 'integer', ['comment' => 'Ключ узора'])
+            ->addColumn('design_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ узора'])
             ->addForeignKey('design_id', 'designes', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addTimestamps()
             ->create();
