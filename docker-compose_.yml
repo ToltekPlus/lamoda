@@ -6,7 +6,7 @@ services:
     container_name: nginx
     image: nginx:alpine
     ports:
-      - "8001:80"
+      - "8000:80"
     volumes:
       - ./php/services:/srv/www/services
       - ./static:/srv/www/static
@@ -16,20 +16,14 @@ services:
     environment:
       - HOST=0.0.0.0
       - CHOKIDAR_USEPOLLING=true
-      - VIRTUAL_HOST=alamoda.local
     depends_on:
       - php
       - nodejs
-    networks:
-      - frontend
-      - backend
 
   db:
     container_name: database
     image: mysql
     restart: always
-    networks:
-      - backend
     environment:
       MYSQL_DATABASE: 'lamoda'
       MYSQL_ROOT_USER: 'root'
@@ -42,9 +36,8 @@ services:
   phpmyadmin:
     container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin
-    networks:
-      - frontend
-      - backend
+    ports:
+      - '80:80'
     environment:
       MYSQL_USERNAME: 'root'
       MYSQL_ROOT_PASSWORD: 'password'
@@ -57,10 +50,7 @@ services:
 
   nodejs:
     container_name: frontend
-    hostname: frontend
     build: ./nodejs
-    ports:
-      - "8000:80"
     environment:
      - NODE_ENV=production
      - HOST=0.0.0.0
@@ -77,14 +67,7 @@ services:
 
   php:
     container_name: backend
-    hostname: backend
     build: ./php
-    ports:
-      - "9001:80"
-    networks:
-      - backend
-    extra_hosts:
-      - "lamoda.localhost:192.168.65.2"
     links:
       - db
     volumes:
@@ -96,10 +79,7 @@ services:
       - /var/redis/data:/data
 
 networks:
-  frontend:
-    external:
-      name: proxy_proxy
-  backend:
+  mysql-phpmyadmin:
 
 volumes:
   my-db:
