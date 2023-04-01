@@ -1,6 +1,8 @@
 <template>
   <li class="column is-4">
-    <a href=""><ion-icon name="person-outline"></ion-icon></a>
+    <router-link to="/user"
+      ><ion-icon name="person-outline"></ion-icon
+    ></router-link>
   </li>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="logotype column is-3">
-    <a href="/">
+    <router-link to="/">
       <svg height="40px" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0)">
           <path
@@ -30,7 +30,7 @@
           </clipPath>
         </defs>
       </svg>
-    </a>
+    </router-link>
   </div>
 </template>
 
