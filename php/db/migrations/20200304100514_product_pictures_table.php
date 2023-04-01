@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class FavoriteProductsTable extends AbstractMigration
+final class ProductPicturesTable extends AbstractMigration
 {
     public function up(): void
     {
-        $exists = $this->hasTable('favorite_products');
+        $exists = $this->hasTable('product_pictures');
         if ($exists) {
-            $this->table('favorite_products')->drop()->save();
+            $this->table('product_pictures')->drop()->save();
         }
     }
     /**
@@ -25,11 +25,11 @@ final class FavoriteProductsTable extends AbstractMigration
      */
     public function change(): void
     {
-        $table = $this->table('favorite_products');
+        $table = $this->table('product_pictures');
         
-        $table->addColumn('user_account_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ аккаунта пользователя'])
-            ->addForeignKey('user_account_id', 'users_account', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
-            ->addColumn('product_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ продукта'])
+        $table->addColumn('picture_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ картинки'])
+            ->addForeignKey('picture_id', 'pictures', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
+            ->addColumn('product_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ продукта'])
             ->addForeignKey('product_id', 'products', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addTimestamps()
             ->create();

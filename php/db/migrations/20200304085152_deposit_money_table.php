@@ -27,10 +27,10 @@ final class DepositMoneyTable extends AbstractMigration
     {
         $table = $this->table('deposit_money');
         
-        $table->addColumn('account_wallet_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ аккаунта кошелька'])
+        $table->addColumn('account_wallet_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ аккаунта кошелька'])
         ->addForeignKey('account_wallet_id', 'account_wallets', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
-        ->addColumn('bank_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ банка'])
-            ->addForeignKey('bank_id', 'banks', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
+        ->addColumn('bank_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ банка'])
+        ->addForeignKey('bank_id', 'banks', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addColumn('value_money', 'float', ['comment' => 'Деньги на счёте'])
             ->addTimestamps()
             ->create();

@@ -27,9 +27,9 @@ final class DesignColorsTable extends AbstractMigration
     {
         $table = $this->table('design_colors');
         
-        $table->addColumn('color_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ цвета'])
+        $table->addColumn('color_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ цвета'])
             ->addForeignKey('color_id', 'colors', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
-            ->addColumn('design_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ узора'])
+            ->addColumn('design_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ узора'])
             ->addForeignKey('design_id', 'designes', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addTimestamps()
             ->create();

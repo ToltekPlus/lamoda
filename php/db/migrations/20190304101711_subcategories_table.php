@@ -27,7 +27,7 @@ final class SubcategoriesTable extends AbstractMigration
     {
         $table = $this->table('subcategories');
         
-        $table->addColumn('category_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ категории'])
+        $table->addColumn('category_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ категории'])
             ->addForeignKey('category_id', 'categories', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addTimestamps()
             ->create();

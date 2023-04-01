@@ -27,10 +27,10 @@ final class AccountWalletsTable extends AbstractMigration
     {
         $table = $this->table('account_wallets');
         
-        $table->addColumn('wallet_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ кошелька'])
+        $table->addColumn('wallet_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ кошелька'])
         ->addForeignKey('wallet_id', 'wallets', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
-        ->addColumn('account_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ аккаунта'])
-            ->addForeignKey('account_id', 'accounts', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
+        ->addColumn('account_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ аккаунта'])
+        ->addForeignKey('account_id', 'accounts', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addTimestamps()
             ->create();
     }

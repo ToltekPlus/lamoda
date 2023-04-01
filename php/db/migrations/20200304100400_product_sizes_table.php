@@ -27,9 +27,9 @@ final class ProductSizesTable extends AbstractMigration
     {
         $table = $this->table('product_sizes');
         
-        $table->addColumn('product_id', 'integer', ['null' => false, 'signed' => true, 'comment' => 'Ключ продукта'])
+        $table->addColumn('product_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ продукта'])
         ->addForeignKey('product_id', 'products', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
-        ->addColumn('size', 'string', ['comment' => 'Размер'])
+        ->addColumn('size_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ размера'])
         ->addForeignKey('size_id', 'sizes', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addTimestamps()
             ->create();
