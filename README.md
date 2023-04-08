@@ -31,7 +31,7 @@ docker-compose exec -it php bash
 cd php
 ```
 
-- войти в папку services
+- Войти в папку services
 ```
 cd services
 ```

@@ -28,6 +28,7 @@ final class RolesTable extends AbstractMigration
         $table = $this->table('roles');
         
         $table->addColumn('role', 'string', ['comment' => 'Роль пользователя'])
+            ->addColumn('role_level', 'integer', ['comment' => 'Числовой уровень доступа'])
             ->addTimestamps()
             ->create();
     }
