@@ -21,22 +21,22 @@ git clone https://github.com/ToltekPlus/lamoda.git .
 docker-compose up -d
 ```
 
-- 
+- Зайти внутрь контейнера
 ```
 docker-compose exec -it php bash
 ```
 
-- 
+- Войти в папку php
 ```
 cd php
 ```
 
-- 
+- войти в папку services
 ```
 cd services
 ```
 
-- 
+- Запустить все миграции (ваша база данных должна быть пустая)
 ```
 vendor/bin/phinx migrate
 ```
