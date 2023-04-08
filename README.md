@@ -21,6 +21,26 @@ git clone https://github.com/ToltekPlus/lamoda.git .
 docker-compose up -d
 ```
 
+- 
+```
+docker-compose exec -it php bash
+```
+
+- 
+```
+cd php
+```
+
+- 
+```
+cd services
+```
+
+- 
+```
+vendor/bin/phinx migrate
+```
+
 - Запускаем в браузере
 ```
 http://localhost:8000
