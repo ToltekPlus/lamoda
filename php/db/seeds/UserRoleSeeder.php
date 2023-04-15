@@ -3,7 +3,7 @@
 
 use Phinx\Seed\AbstractSeed;
 
-class MaterialSeeder extends AbstractSeed
+class UserRoleSeeder extends AbstractSeed
 {
     /**
      * Run Method.
@@ -15,6 +15,6 @@ class MaterialSeeder extends AbstractSeed
      */
     public function run(): void
     {
-        
+
     }
 }

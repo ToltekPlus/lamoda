@@ -15,6 +15,20 @@ class GenderSeeder extends AbstractSeed
      */
     public function run(): void
     {
+        $data = [
+            [
+                'gender' => 'Male',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ],
+            [
+                'gender' => 'Female',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]
+        ];
 
+        $gender = $this->table('genders');
+        $gender->insert($data)->save();
     }
 }

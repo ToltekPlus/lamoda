@@ -15,6 +15,20 @@ class CategorySeeder extends AbstractSeed
      */
     public function run(): void
     {
+        $faker = Faker\Factory::create('ru_RU');   
 
+        $data = [];
+
+        for ($i = 0; $i < 50; $i++) {
+            $subcategory_id = array_rand([1,2]);
+            array_push($data, [
+                'category' => $faker->word(),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+        }
+
+        $category = $this->table('categories');
+        $category->insert($data)->save();
     }
 }

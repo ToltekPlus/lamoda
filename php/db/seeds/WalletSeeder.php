@@ -15,6 +15,18 @@ class WalletSeeder extends AbstractSeed
      */
     public function run(): void
     {
+        $faker = Faker\Factory::create('ru_RU');
+        $data = [];
 
+        for ($i = 0; $i < 50; $i++) {
+            array_push($data, [
+                'value_money' => $faker->number(),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]) ;
+        }
+
+        $wallet = $this->table('wallets');
+        $wallet->insert($data)->save();
     }
 }

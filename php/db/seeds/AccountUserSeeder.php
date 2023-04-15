@@ -15,22 +15,20 @@ class AccountUserSeeder extends AbstractSeed
      */
     public function run(): void
     {
-        // TODO refactoring
-        $foreignKeysUsers = $this->adapter->fetchAll("SELECT * FROM users");
-        $foreignKeysAccounts = $this->adapter->fetchAll("SELECT * FROM accounts");
+        $faker = Faker\Factory::create('ru_RU');   
 
-        $data = [
-            [
-                'user_id' => $foreignKeysUsers[0]['id'],
-                'account_id' => $foreignKeysAccounts[0]['id'],
-            ],
-            [
-                'user_id' => $foreignKeysUsers[1]['id'],
-                'account_id' => $foreignKeysAccounts[1]['id'],
-            ]
-        ];
+        $data = [];
 
-        $account = $this->table('accounts_user');
-        $account->insert($data)->save();
+        for ($i = 0; $i < 50; $i++) {
+            $account_id = array_rand([1,2]);
+            $user_id = array_rand([1,2]);
+            array_push($data, [
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+        }
+
+        $account_user = $this->table('accounts_users');
+        $account_user->insert($data)->save();
     }
 }
