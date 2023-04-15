@@ -1,6 +1,7 @@
 header
   margin: $base-margin 0 !important
   font-size: $font-family-base
+  transform: none
   .logotype
     svg
       width: 100%
@@ -27,13 +28,13 @@ header
     display: none
   .hamburger__menu_opened
     display: block
-    height: 99vh
+    height: 101vh
     margin-top: -15px
     display: block
     position: fixed
-    z-index: 99
+    z-index: 1000
     background: white
-    width: 99vw
+    width: 100vw
     .hamb__meny-item
       margin-top: 15px
       border-top: 2px #c8c8c8 solid
@@ -45,9 +46,8 @@ header
         margin: auto
     transition: transform 0.2s
     padding-top: 4rem
-  .showMenu
-  transform: translateY(0)
   .hamburger_active
+    position: fixed
     .second-line
       transform: rotate(45deg)
     .first-line
