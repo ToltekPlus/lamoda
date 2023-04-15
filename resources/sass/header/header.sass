@@ -1,6 +1,7 @@
 header
   margin: $base-margin 0 !important
   font-size: $font-family-base
+  transform: none
   .logotype
     svg
       width: 100%
@@ -23,15 +24,17 @@ header
     position: absolute
     top: 12.75px
     z-index: 1001
-  .hamburger__menu
-    position: fixed
-    margin: 0
-    width: 100vw
-    height: 100vh
-    margin-left: -15px
+  .hamburger__menu_closed
+    display: none
+  .hamburger__menu_opened
+    display: block
+    height: 101vh
     margin-top: -15px
-    background: #fff
+    display: block
+    position: fixed
     z-index: 1000
+    background: white
+    width: 100vw
     .hamb__meny-item
       margin-top: 15px
       border-top: 2px #c8c8c8 solid
@@ -39,22 +42,12 @@ header
         color: #000
     .search_h
       .control
-        width: 500px
+        width: 300px
         margin: auto
-    transform: translateY(-100%)
     transition: transform 0.2s
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
-    z-index: 99
-    background: black
-    color: white
-    list-style: none
     padding-top: 4rem
-  .showMenu
-  transform: translateY(0)
-  .hamburger:hover
+  .hamburger_active
+    position: fixed
     .second-line
       transform: rotate(45deg)
     .first-line
