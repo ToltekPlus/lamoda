@@ -5,7 +5,7 @@
     <div class="navbar column is-7">
       <div class="nav-category columns">
         <navigation :navigationList="navigationList" />
-        <search />
+        <search :prodsList="prodsList" />
       </div>
     </div>
 
@@ -22,6 +22,7 @@
 <script>
 import cart from "./data/cart.json";
 import genders from "./data/navigation.json";
+import Prods from "./data/testSearch.json";
 
 import Logotype from "./components/Logotype/LogotypeComponent.vue";
 import Navigation from "./components/Navigation/NavigationComponent.vue";
@@ -36,6 +37,7 @@ export default {
     return {
       cartList: cart,
       navigationList: genders,
+      prodsList: Prods,
     };
   },
   components: {
