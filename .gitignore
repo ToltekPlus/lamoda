@@ -2,3 +2,5 @@
 .idea/*
 node_modules/
 /vendor
+public/styles/*
+.gitignore
