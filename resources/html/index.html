@@ -1394,7 +1394,18 @@
 </div>
     <h4 class="license">© 2022-2023 Все права не защищены, alamoda</h4>
 </div>
-<div class="scroller">
+<div class="scroller" id="anch">
     <a class="scroller_a" href="#">↑</a>
 </div>
+<script>
+    window.onscroll = function(){
+ var html = document.documentElement, body = document.body;
+ var anch = document.getElementById('anch').style;
+ if(html.scrollTop>676||body.scrollTop>676) {
+  anch.display="block";
+ } else {
+  anch.display="none";
+ }
+}
+</script>
 </html>
