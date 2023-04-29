@@ -9,9 +9,10 @@ final class UserRoleTable extends AbstractMigration
     {
         $exists = $this->hasTable('user_roles');
         if ($exists) {
-            $this->table('user_roles')->drop()->save();
+            $this->table('user_role')->drop()->save();
         }
     }
+
     /**
      * Change Method.
      *
@@ -25,13 +26,14 @@ final class UserRoleTable extends AbstractMigration
      */
     public function change(): void
     {
-        $table = $this->table('design_colors');
-        
+        $table = $this->table('user_role');
+
         $table->addColumn('user_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ пользователя'])
             ->addForeignKey('user_id', 'users', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addColumn('role_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ роли'])
             ->addForeignKey('role_id', 'roles', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addTimestamps()
-            ->create();
+            ->save();
     }
 }
+

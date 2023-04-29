@@ -3,7 +3,7 @@
 
 use Phinx\Seed\AbstractSeed;
 
-class AccountUserSeeder extends AbstractSeed
+class AccountsUserSeeder extends AbstractSeed
 {
     /**
      * Run Method.
@@ -28,7 +28,7 @@ class AccountUserSeeder extends AbstractSeed
             ]);
         }
 
-        $account_user = $this->table('accounts_users');
+        $account_user = $this->table('accounts_user');
         $account_user->insert($data)->save();
     }
 }

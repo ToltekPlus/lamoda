@@ -15,6 +15,20 @@ class UserRoleSeeder extends AbstractSeed
      */
     public function run(): void
     {
+        $faker = Faker\Factory::create('ru_RU');   
 
+        $data = [];
+
+        for ($i = 0; $i < 50; $i++) {
+            $user_id = array_rand([1,2]);
+            $role_id = array_rand([1,2]);
+            array_push($data, [
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+        }
+
+        $user_role = $this->table('user_role');
+        $user_role->insert($data)->save();
     }
 }

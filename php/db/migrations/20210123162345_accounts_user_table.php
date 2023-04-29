@@ -28,11 +28,12 @@ final class AccountsUserTable extends AbstractMigration
     {
         $table = $this->table('accounts_user');
 
-        $table->addTimestamps()
+        $table
             ->addColumn('user_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ пользователя'])
             ->addForeignKey('user_id', 'users', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addColumn('account_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ аккаунта'])
             ->addForeignKey('account_id', 'accounts', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
+            ->addTimestamps()
             ->save();
     }
 }

@@ -15,7 +15,7 @@ class GenderSeeder extends AbstractSeed
      */
     public function run(): void
     {
-        $data = [
+        for ($i = 0; $i < 50; $i++) {$data = [
             [
                 'gender' => 'Male',
                 'created_at' => date('Y-m-d H:i:s'),
@@ -31,4 +31,5 @@ class GenderSeeder extends AbstractSeed
         $gender = $this->table('genders');
         $gender->insert($data)->save();
     }
+}
 }

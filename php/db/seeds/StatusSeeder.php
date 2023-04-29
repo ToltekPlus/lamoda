@@ -20,7 +20,7 @@ class StatusSeeder extends AbstractSeed
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'status_code' => $faker->number(8),
+                'status_code' => $faker->numberBetween(),
                 'status' => $faker->word(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')

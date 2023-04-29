@@ -24,7 +24,8 @@ class UserSeeder extends AbstractSeed
                 'phone' => $faker->phoneNumber(),
                 'password' => md5($faker->password()),
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s'),
+                'last_at' => date('Y-m-d H:i:s')
             ]) ;
         }
 

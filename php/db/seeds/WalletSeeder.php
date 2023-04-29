@@ -20,7 +20,7 @@ class WalletSeeder extends AbstractSeed
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'value_money' => $faker->number(),
+                'value_money' => $faker->numberBetween(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]) ;

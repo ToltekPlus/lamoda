@@ -16,6 +16,7 @@ class RoleSeeder extends AbstractSeed
     public function run(): void
     {
         // TODO добавить числовой уровень доступа
+        for ($i = 0; $i < 50; $i++) {
         $data = [
             [
                 'role' => 'Administrator',
@@ -34,4 +35,5 @@ class RoleSeeder extends AbstractSeed
         $role = $this->table('roles');
         $role->insert($data)->save();
     }
+}
 }

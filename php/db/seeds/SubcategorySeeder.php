@@ -21,13 +21,12 @@ class SubcategorySeeder extends AbstractSeed
         for ($i = 0; $i < 50; $i++) {
             $category_id = array_rand([1,2]);
             array_push($data, [
-                'subcategory' => $faker->word(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]) ;
         }
 
-        $subcategory = $this->table('usubcategories');
+        $subcategory = $this->table('subcategories');
         $subcategory->insert($data)->save();
     }
 }

@@ -20,7 +20,7 @@ class BankSeeder extends AbstractSeed
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'bank' => $faker->word(),
+                'bank_name' => $faker->word(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]) ;
