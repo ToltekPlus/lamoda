@@ -2,9 +2,9 @@
 
 ## Требования
 
-> PHP 7.4+
+> PHP 8.1
 >
-> node 16+
+> node 18+
 >
 > MySQL 8.0+
 
@@ -18,10 +18,19 @@ git clone https://github.com/ToltekPlus/lamoda.git .
 
 - Разворачиваем Docker
 ```
-docker-compose up -d
+docker-compose up
 ```
 
-- Запускаем в браузере
+Докер предложит два адреса для работы
+
 ```
-http://localhost:8000
+http://localhost:8080 ДЛЯ РАБОТЫ БЭКЕНД ЧАСТИ
 ``` 
+
+```
+http://172.28.0.6:8080/ ПРИМЕР АДРЕСА ДЛЯ ФРОНТЕНД ЧАСТИ
+``` 
+
+Более подробное описание ищите в файлах:
+По работе с [фронтендом](nodejs/README.md).
+По работе с [бэкендом](php/README.md).
