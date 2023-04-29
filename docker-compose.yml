@@ -1,105 +1,80 @@
-version: "3.1"
-
+version: "3"
 services:
-
   nginx:
     container_name: nginx
-    image: nginx:alpine
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
     ports:
-      - "8001:80"
+      - "8080:80"
+    networks:
+      - internal
     volumes:
-      - ./php/services:/srv/www/services
-      - ./static:/srv/www/static
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-    stdin_open: true
-    tty: true
-    environment:
-      - HOST=0.0.0.0
-      - CHOKIDAR_USEPOLLING=true
-      - VIRTUAL_HOST=alamoda.local
-    depends_on:
-      - php
-      - nodejs
-    networks:
-      - frontend
-      - backend
-
-  db:
-    container_name: database
-    image: mysql
-    restart: always
-    networks:
-      - backend
-    environment:
-      MYSQL_DATABASE: 'lamoda'
-      MYSQL_ROOT_USER: 'root'
-      MYSQL_ROOT_PASSWORD: 'password'
-    ports:
-      - '3306:3306'
-    volumes:
-      - .:/php/db/dump/init.sql
-
-  phpmyadmin:
-    container_name: phpmyadmin
-    image: phpmyadmin/phpmyadmin
-    networks:
-      - frontend
-      - backend
-    environment:
-      MYSQL_USERNAME: 'root'
-      MYSQL_ROOT_PASSWORD: 'password'
-    healthcheck:
-      test: mysqladmin ping -h 127.0.0.1 -u root --password=password
-      start_period: 5s
-      interval: 5s
-      timeout: 5s
-      retries: 55
+      - ./php/services/:/var/www/html
 
   nodejs:
     container_name: frontend
-    hostname: frontend
     build: ./nodejs
-    ports:
-      - "8000:80"
     environment:
-     - NODE_ENV=production
-     - HOST=0.0.0.0
-     - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=production
+      - HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
     working_dir: /home/app
     restart: always
     volumes:
       - ./nodejs:/home/app
     depends_on:
       - php
-    #command: npm start
-    links:
-      - redis
+    command: npm start
+    networks:
+      - internal
 
   php:
     container_name: backend
-    hostname: backend
     build: ./php
-    ports:
-      - "9001:80"
-    networks:
-      - backend
-    extra_hosts:
-      - "lamoda.localhost:192.168.65.2"
-    links:
+    depends_on:
       - db
+    stdin_open: true
+    tty: true
+    networks:
+      - internal
     volumes:
-      - .:/var/www/html
+      - ./php/services/:/var/www/html
+      - /logs/php.log:/var/log/fpm-php.www.log
 
-  redis:
-    image: redis:alpine
+  db:
+    container_name: database
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'lamoda'
+      MYSQL_ROOT_USER: 'root'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3303:3303'
     volumes:
-      - /var/redis/data:/data
+      - .:/php/db/dump/init.sql
+    networks:
+      - internal
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - '90:80'
+    environment:
+      MYSQL_USERNAME: 'root'
+      MYSQL_ROOT_PASSWORD: 'password'
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u root --password=password
+      #start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 55
+    networks:
+      - internal
 
 networks:
-  frontend:
-    external:
-      name: proxy_proxy
-  backend:
+  internal:
+    driver: bridge
 
-volumes:
-  my-db:
