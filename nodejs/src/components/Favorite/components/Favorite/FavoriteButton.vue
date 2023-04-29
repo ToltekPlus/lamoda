@@ -1,17 +1,13 @@
 <template>
   <li class="column is-4"></li>
-    <div v-for="(product, i) in products.productsList" :key="i">
-      <span v-if="product.favorite === true"
-      @click="deleteFromFavorite(product)"
-      >
-        <ion-icon name="heart-outline"></ion-icon>
-      </span>
-      <span v-else
-            @click="addToFavorite(product)"
-      >
-          <ion-icon name="heart-dislike-outline"></ion-icon>
-      </span>
-    </div>
+  <div v-for="(product, i) in products.productsList" :key="i">
+    <span v-if="product.favorite === true" @click="deleteFromFavorite(product)">
+      <ion-icon name="heart-outline"></ion-icon>
+    </span>
+    <span v-else @click="addToFavorite(product)">
+      <ion-icon name="heart-dislike-outline"></ion-icon>
+    </span>
+  </div>
   <p v-for="(product, i) in products.productsList" :key="i">
     {{ product }}
   </p>
@@ -27,29 +23,28 @@ export default {
         productsList: [
           {
             product_id: 0,
-            favorite: false
+            favorite: false,
           },
           {
             product_id: 1,
-              favorite: true
+            favorite: true,
           },
           {
             product_id: 2,
-              favorite: false
+            favorite: false,
           },
         ],
       },
-
     };
   },
   methods: {
     addToFavorite: function (data) {
-        this.products.productsList[data.product_id].favorite = true;
+      this.products.productsList[data.product_id].favorite = true;
     },
-      deleteFromFavorite: function (data) {
-          this.products.productsList[data.product_id].favorite = false;
-      }
-  }
+    deleteFromFavorite: function (data) {
+      this.products.productsList[data.product_id].favorite = false;
+    },
+  },
 };
 </script>
 <style scoped></style>
