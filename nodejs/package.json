@@ -1,5 +1,5 @@
 {
-  "name": "ALamoda",
+  "name": "alamoda",
   "version": "1.0.0",
   "private": true,
   "description": "Lamoda site redesign",
@@ -9,7 +9,8 @@
   "scripts": {
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint --ignore-path .gitignore --fix src",
-    "start": "vue-cli-service serve"
+    "serve": "vue-cli-service serve",
+    "start": "npm run lint && npm run serve"
   },
   "dependencies": {
     "core-js": "^3.8.3",
