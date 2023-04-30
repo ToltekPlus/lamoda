@@ -12,7 +12,7 @@
     <div class="user-data column is-2">
       <ul class="columns">
         <user />
-        <favorite />
+        <favorite :favoriteList="favoriteList" />
         <cart :cartList="cartList" />
       </ul>
     </div>
@@ -22,6 +22,7 @@
 <script>
 import cart from "./data/cart.json";
 import genders from "./data/navigation.json";
+import favorite from "./data/favorite.json";
 
 import Logotype from "./components/Logotype/LogotypeComponent.vue";
 import Navigation from "./components/Navigation/NavigationComponent.vue";
@@ -36,6 +37,7 @@ export default {
     return {
       cartList: cart,
       navigationList: genders,
+      favoriteList: favorite,
     };
   },
   components: {
