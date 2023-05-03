@@ -54,7 +54,4 @@ ion-icon {
 .cart .cart-items {
   padding: 0 1em 2em 1em;
 }
-.cart .cart-items .cartTable {
-  width: 10em;
-}
 </style>
