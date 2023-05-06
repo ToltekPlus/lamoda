@@ -11,8 +11,8 @@
         </a>
         <table class="cartTable">
           <tbody>
-            <tr>
-              <td v-for="(item, i) in list" :key="i" v-if="list !== null">
+            <tr v-if="list !== null">
+              <td v-for="(item, i) in list" :key="i">
                 {{ item }}
               </td>
             </tr>
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       showCart: false,
-      list: null
+      list: null,
     };
   },
   methods: {

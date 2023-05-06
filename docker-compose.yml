@@ -15,10 +15,12 @@ services:
   nodejs:
     container_name: frontend
     build: ./nodejs
-    environment:
-      - NODE_ENV=production
-      - HOST=0.0.0.0
-      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "4000:8080"
+    #environment:
+    #  - NODE_ENV=production
+    #  - HOST=0.0.0.0
+    #  - CHOKIDAR_USEPOLLING=true
     working_dir: /home/app
     restart: always
     volumes:
