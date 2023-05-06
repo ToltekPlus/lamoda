@@ -12,9 +12,16 @@
     "lint": "vue-cli-service lint --ignore-path .gitignore --fix src"
   },
   "dependencies": {
+    "@coreui/coreui": "^4.2.6",
+    "@coreui/vue": "^4.8.1",
+    "@popperjs/core": "^2.11.7",
+    "bootstrap": "^5.3.0-alpha3",
+    "bootstrap-icons": "^1.10.5",
+    "bootstrap-vue": "^2.23.1",
     "core-js": "^3.8.3",
     "dotenv": "^16.0.0",
-    "vue": "^3.2.13"
+    "vue": "^3.2.47",
+    "vue-carousel": "^0.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
