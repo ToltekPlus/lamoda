@@ -5,13 +5,13 @@ use Phinx\Seed\AbstractSeed;
 
 class MainSeeder extends AbstractSeed
 {
-     // TODO realization load seed
-
+    // TODO realization load seed
+    
     protected $seedClasses = [
-        MaterialSeeder::class,
         CompanySeeder::class,
         DesignSeeder::class,
         ColorSeeder::class,
+        MateriallSeeder::class,
         StyleSeeder::class,
         SizeSeeder::class,
         CategorySeeder::class,
@@ -24,10 +24,10 @@ class MainSeeder extends AbstractSeed
         GenderSeeder::class,
         UserRoleSeeder::class,
         AccountSeeder::class,
-        AccountsUserSeeder::class,
-        AccountWalletsSeeder::class,
+        AccountUserSeeder::class,
+        AccountWalletSeeder::class,
         SubcategorySeeder::class,
-        DesignColorsSeeder::class,
+        DesignColorSeeder::class,
         ProductSeeder::class,
         ProductPicturesSeeder::class,
         ProductSizeSeeder::class,
@@ -36,8 +36,17 @@ class MainSeeder extends AbstractSeed
         FavoriteProductsSeeder::class
     ];
 
+    /**
+     * Run Method.
+     *
+     * Write your database seeder using this method.
+     *
+     * More information on writing seeders is available here:
+     * https://book.cakephp.org/phinx/0/en/seeding.html
+     */
     public function run(): void
     {
+        
         foreach ($this->seedClasses as $seedClass) {
             $seeder = new $seedClass;
             $seeder->setAdapter($this->getAdapter());
