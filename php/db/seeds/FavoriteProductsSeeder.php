@@ -19,10 +19,14 @@ class FavoriteProductsSeeder extends AbstractSeed
 
         $data = [];
 
+        $accounts_user_ids = $this->fetchAll('SELECT id FROM accounts_user');
+
+        $products_ids = $this->fetchAll('SELECT id FROM products');
+
         for ($i = 0; $i < 50; $i++) {
-            $account_user_id = array_rand([1,2]);
-            $product_id = array_rand([1,2]);
             array_push($data, [
+                'accounts_user_id' => array_rand($accounts_user_ids, 1),
+                'products_id' => array_rand($products_ids, 1),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

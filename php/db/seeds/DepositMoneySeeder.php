@@ -18,10 +18,14 @@ class DepositMoneySeeder extends AbstractSeed
 
         $data = [];
 
+        $wallets_ids = $this->fetchAll('SELECT id FROM accounts');
+
+        $banks_ids = $this->fetchAll('SELECT id FROM banks');
+
         for ($i = 0; $i < 50; $i++) {
-            $wallet_id = array_rand([1,2]);
-            $bank_id = array_rand([1,2]);
             array_push($data, [
+                'banks_id' => array_rand($banks_ids, 1),
+                'wallets_id' => array_rand($wallets_ids, 1),
                 'value_money' => $faker->numberBetween(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')

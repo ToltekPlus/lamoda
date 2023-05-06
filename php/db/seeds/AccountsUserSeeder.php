@@ -19,10 +19,14 @@ class AccountsUserSeeder extends AbstractSeed
 
         $data = [];
 
+        $accounts_ids = $this->fetchAll('SELECT id FROM accounts');
+
+        $users_ids = $this->fetchAll('SELECT id FROM users');
+
         for ($i = 0; $i < 50; $i++) {
-            $account_id = array_rand([1,2]);
-            $user_id = array_rand([1,2]);
             array_push($data, [
+                'accounts_id' => array_rand($accounts_ids, 1),
+                'users_id' => array_rand($users_ids, 1),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

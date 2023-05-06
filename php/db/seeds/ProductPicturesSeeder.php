@@ -19,10 +19,15 @@ class ProductPicturesSeeder extends AbstractSeed
 
         $data = [];
 
+        $products_ids = $this->fetchAll('SELECT id FROM products');
+
+        $pictures_ids = $this->fetchAll('SELECT id FROM pictures');
+
+
         for ($i = 0; $i < 50; $i++) {
-            $product_id = array_rand([1,2]);
-            $picture_id = array_rand([1,2]);
             array_push($data, [
+                'products_id' => array_rand($products_ids, 1),
+                'pictures_id' => array_rand($pictures_ids, 1),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

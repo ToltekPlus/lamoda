@@ -18,9 +18,11 @@ class SubcategorySeeder extends AbstractSeed
         $faker = Faker\Factory::create('ru_RU');
         $data = [];
 
+        $categories_ids = $this->fetchAll('SELECT id FROM categories');
+
         for ($i = 0; $i < 50; $i++) {
-            $category_id = array_rand([1,2]);
             array_push($data, [
+                'categories_id' => array_rand($categories_ids, 1),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]) ;

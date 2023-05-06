@@ -19,11 +19,17 @@ class OrderSeeder extends AbstractSeed
 
         $data = [];
 
+        $products_ids = $this->fetchAll('SELECT id FROM products');
+
+        $account_wallets_ids = $this->fetchAll('SELECT id FROM account_wallets');
+
+        $statuses_ids = $this->fetchAll('SELECT id FROM statuses');
+
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                /*$account_wallet_id = array_rand([1,2]),
-                $product_id = array_rand([1,2]),
-                $status_id = array_rand([1,2]),*/
+                'account_wallets_id' => array_rand($account_wallets_ids, 1),
+                'products_id' => array_rand($products_ids, 1),
+                'statuses_id' => array_rand($statuses_ids, 1),
                 'buy_time' => date('Y-m-d H:i:s'),
                 'receive_time' => date('Y-m-d H:i:s'),
                 'created_at' => date('Y-m-d H:i:s'),

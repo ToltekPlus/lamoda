@@ -19,10 +19,14 @@ class DesignColorsSeeder extends AbstractSeed
 
         $data = [];
 
+        $colors_ids = $this->fetchAll('SELECT id FROM colors');
+
+        $designes_ids = $this->fetchAll('SELECT id FROM designes');
+
         for ($i = 0; $i < 50; $i++) {
-            $design_id = array_rand([1,2]);
-            $color_id = array_rand([1,2]);
             array_push($data, [
+                'colors_id' => array_rand($colors_ids, 1),
+                'designes_id' => array_rand($designes_ids, 1),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
