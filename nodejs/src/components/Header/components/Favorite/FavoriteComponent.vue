@@ -16,18 +16,27 @@
         </a>
         <table class="favoriteTable">
           <tbody>
-            <tr class="products">
-              <td
-                v-for="(product, i) in favoriteList.productsInFavorite"
-                :key="i"
-              >
+            <tr
+              class="products"
+              v-for="(product, i) in favoriteList.productsInFavorite"
+              :key="i"
+            >
+              <td v-if="favoriteList.productsInFavorite[i].favorite === true">
                 <div class="data">
-                  <div class="image"></div>
+                  <div class="image">
+                    <img src="../../data/9impulse.jpg" alt="" />
+                  </div>
                   <div class="info">
                     <div class="name">
                       {{ product.name }}
                     </div>
                     <div class="price">Цена: {{ product.price }}₽</div>
+                  </div>
+                  <div class="delete_item">
+                    <ion-icon
+                      name="trash-bin-outline"
+                      @click="deleteFromFavorite(i)"
+                    ></ion-icon>
                   </div>
                 </div>
               </td>
@@ -52,17 +61,26 @@ export default {
             name: "Футболка с принтом 'Меня бы кто в тонусе поддержал'",
             category: "Футболки",
             price: 399,
-            image_path: "./data/9impulse.jpg",
+            favorite: true,
           },
           {
             product_id: 3,
             name: "Джинсы черные",
             category: "Джинсы",
             price: 1999,
+            favorite: true,
           },
         ],
       },
     };
+  },
+  methods: {
+    deleteFromFavorite(id) {
+      console.log(this.favoriteList.productsInFavorite[id].favorite);
+      for (let i = 0; i < this.favoriteList.productsInFavorite.length; i++) {
+        this.favoriteList.productsInFavorite[id].favorite = false;
+      }
+    },
   },
 };
 </script>
@@ -89,11 +107,16 @@ ion-icon {
 }
 .favorite .favorite-items {
   padding: 0 1em 2em 1em;
-  width: 100%;
+  width: 700px;
 }
 .favorite .favorite-items. favoriteTable {
   width: 10em;
 }
+
+.favoriteTable {
+  width: 100%;
+}
+
 .products {
   display: flex;
   flex-direction: column;
@@ -119,10 +142,12 @@ td {
   border: solid 1px black;
   border-radius: 10px;
   width: 140px;
+  overflow: hidden;
 }
 
 .info {
   padding: 0 0 1em 0;
+  margin: 1em;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
