@@ -25,8 +25,8 @@ class ProductSizeSeeder extends AbstractSeed
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'products_id' => array_rand($products_ids, 1),
-                'sizes_id' => array_rand($sizes_ids, 1),
+                'product_id' => $products_ids[array_rand($products_ids, 1)]['id'],
+                'size_id' => $sizes_ids[array_rand($sizes_ids, 1)]['id'],
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

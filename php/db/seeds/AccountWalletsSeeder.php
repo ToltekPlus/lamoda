@@ -25,8 +25,8 @@ class AccountWalletsSeeder extends AbstractSeed
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'accounts_id' => array_rand($accounts_ids, 1),
-                'wallets_id' => array_rand($wallets_ids, 1),
+                'account_id' => $accounts_ids[array_rand($accounts_ids, 1)]['id'],
+                'wallet_id' => $wallets_ids[array_rand($wallets_ids, 1)]['id'],
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

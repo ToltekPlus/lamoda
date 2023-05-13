@@ -25,8 +25,8 @@ class FavoriteProductsSeeder extends AbstractSeed
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'accounts_user_id' => array_rand($accounts_user_ids, 1),
-                'products_id' => array_rand($products_ids, 1),
+                'accounts_user_id' => $accounts_user_ids[array_rand($accounts_user_ids, 1)]['id'],
+                'product_id' => $products_ids[array_rand($products_ids, 1)]['id'],
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

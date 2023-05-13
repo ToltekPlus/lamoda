@@ -25,8 +25,8 @@ class DesignColorsSeeder extends AbstractSeed
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'colors_id' => array_rand($colors_ids, 1),
-                'designes_id' => array_rand($designes_ids, 1),
+                'color_id' => $colors_ids[array_rand($colors_ids, 1)]['id'],
+                'design_id' => $designes_ids[array_rand($designes_ids, 1)]['id'],
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
