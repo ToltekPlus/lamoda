@@ -1,10 +1,10 @@
 <template>
   <li class="column is-4"></li>
   <div v-for="(product, i) in products.productsList" :key="i">
-    <span v-if="product.favorite === true" @click="deleteFromFavorite(product)">
+    <span v-if="product.favorite === true" @click="deleteFromFavorite(i)">
       <ion-icon name="heart-outline"></ion-icon>
     </span>
-    <span v-else @click="addToFavorite(product)">
+    <span v-else @click="addToFavorite(i)">
       <ion-icon name="heart-dislike-outline"></ion-icon>
     </span>
   </div>
@@ -30,7 +30,7 @@ export default {
             favorite: true,
           },
           {
-            product_id: 2,
+            product_id: 4,
             favorite: false,
           },
         ],
@@ -38,11 +38,11 @@ export default {
     };
   },
   methods: {
-    addToFavorite: function (data) {
-      this.products.productsList[data.product_id].favorite = true;
+    addToFavorite: function (id) {
+      this.products.productsList[id].favorite = true;
     },
-    deleteFromFavorite: function (data) {
-      this.products.productsList[data.product_id].favorite = false;
+    deleteFromFavorite: function (id) {
+      this.products.productsList[id].favorite = false;
     },
   },
 };
