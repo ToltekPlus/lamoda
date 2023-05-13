@@ -19,22 +19,25 @@ export default {
   name: "SearchComponent",
   props: ["prodsList"],
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
-    search(list){
+    search(list) {
       let searchItem = document.querySelector("input"); // Забираем input
-      const sortedList = []
-      for (const item of list.testSearch) { // Перебираем объект
-        if(item.product_name.toLowerCase().includes(searchItem.value.toLowerCase())){ // Преобразуем товары и значение input в нижний регистр и ищем совпадения
-          sortedList.push(item.id) // Записываем в массив ключи
+      const sortedList = [];
+      for (const item of list.testSearch) {
+        // Перебираем объект
+        if (
+          item.product_name
+            .toLowerCase()
+            .includes(searchItem.value.toLowerCase())
+        ) {
+          // Преобразуем товары и значение input в нижний регистр и ищем совпадения
+          sortedList.push(item.id); // Записываем в массив ключи
         }
       }
       console.log(sortedList);
-    }
-  }
+    },
+  },
 };
 </script>
-
-
