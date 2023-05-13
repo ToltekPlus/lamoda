@@ -21,7 +21,7 @@
               v-for="(product, i) in favoriteList.productsInFavorite"
               :key="i"
             >
-              <td v-if="favoriteList.productsInFavorite[i].favorite === true">
+              <td>
                 <div class="data">
                   <div class="image">
                     <img src="../../data/9impulse.jpg" alt="" />
@@ -41,6 +41,12 @@
                 </div>
               </td>
             </tr>
+            <div
+              class="empty-favorite"
+              v-if="favoriteList.productsInFavorite.length === 0"
+            >
+              Вы не добавили товары в избранное!
+            </div>
           </tbody>
         </table>
       </div>
@@ -61,14 +67,18 @@ export default {
             name: "Футболка с принтом 'Меня бы кто в тонусе поддержал'",
             category: "Футболки",
             price: 399,
-            favorite: true,
           },
           {
             product_id: 3,
             name: "Джинсы черные",
             category: "Джинсы",
             price: 1999,
-            favorite: true,
+          },
+          {
+            product_id: 2,
+            name: "Усы импульса",
+            category: "Джинсы",
+            price: 1000,
           },
         ],
       },
@@ -76,10 +86,18 @@ export default {
   },
   methods: {
     deleteFromFavorite(id) {
-      console.log(this.favoriteList.productsInFavorite[id].favorite);
-      for (let i = 0; i < this.favoriteList.productsInFavorite.length; i++) {
-        this.favoriteList.productsInFavorite[id].favorite = false;
+      let products = this.favoriteList.productsInFavorite;
+      let data;
+      for (let i = 0; i < products.length; i++) {
+        data = products.filter(function (value, index) {
+          if (index !== id) {
+            return true;
+          } else {
+            return false;
+          }
+        });
       }
+      this.favoriteList.productsInFavorite = data;
     },
   },
 };
@@ -152,5 +170,10 @@ td {
   justify-content: space-between;
   flex-direction: column;
   width: 70%;
+}
+
+.empty-favorite {
+  display: flex;
+  justify-content: center;
 }
 </style>
