@@ -19,12 +19,9 @@ class CategorySeeder extends AbstractSeed
 
         $data = [];
 
-        $subcategories_ids = $this->fetchAll('SELECT id FROM subcategories');
-
         for ($i = 0; $i < 50; $i++) {
             $subcategory_id = array_rand([1,2]);
             array_push($data, [
-                'subcategories_id' => array_rand($subcategories_ids, 1),
                 'category' => $faker->word(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
