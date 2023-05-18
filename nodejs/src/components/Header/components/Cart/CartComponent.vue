@@ -3,40 +3,36 @@
     <a>
       <ion-icon name="cart-outline" @click="showCart = !showCart"></ion-icon>
     </a>
-    <div class="cart">
-      <div class="cart-items" v-show="showCart">
-        <span @click="testing()">OLOLOLO</span>
-        <a>
-          <ion-icon name="close" @click="showCart = !showCart"></ion-icon>
-        </a>
-        <table class="cartTable">
-          <tbody>
-            <tr v-if="list !== null">
-              <td v-for="(item, i) in list" :key="i">
-                {{ item }}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <h4 class="cartSubTotal" v-show="showCart">0</h4>
-      </div>
-    </div>
+    <modal
+      :state="Cart"
+      :typeState="'cart'"
+      v-model:showModal="showCart"
+      v-show="showCart"
+    />
   </li>
 </template>
 
 <script>
-import axios from "axios";
+import { mapGetters } from "vuex";
+import Modal from "@/components/Header/components/Modal/Modal.vue";
+import Cart from "@/store/modules/cart";
 
 export default {
   name: "CartComponent",
-  props: ["cartList"],
+  components: { Modal },
   data() {
     return {
       showCart: false,
-      list: null,
     };
   },
+  computed: {
+    Cart() {
+      return Cart;
+    },
+    ...mapGetters["CART"],
+  },
   methods: {
+    /*
     async testing() {
       axios
         .get("http://localhost:8080")
@@ -46,31 +42,17 @@ export default {
         .catch((err) => {
           console.log(err.response);
         });
-    },
+    },*/
   },
 };
 </script>
 
 <style scoped>
-.cart {
-  position: fixed;
-  text-align: right;
-  right: 0;
-  top: 0;
-  background: #c9c9c9;
-  z-index: 999;
-}
 ion-icon {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-.cart .cart-items {
-  padding: 0 1em 2em 1em;
-}
-.cart .cart-items .cartTable {
-  width: 10em;
 }
 </style>

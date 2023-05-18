@@ -31,7 +31,9 @@ export default {
     },
 
     DELETE_FROM_CART_MUTATION(state, product) {
-      let filtered_product = state.cart.findIndex((item) => item.id == product);
+      let filtered_product = state.cart.findIndex(
+        (item) => item.id === product
+      );
 
       state.cart.splice(filtered_product, 1);
     },
