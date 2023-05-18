@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class UserTable extends AbstractMigration
+final class RolesTable extends AbstractMigration
 {
     public function up(): void
     {
-        $exists = $this->hasTable('users');
+        $exists = $this->hasTable('roles');
         if ($exists) {
-            $this->table('users')->drop()->save();
+            $this->table('roles')->drop()->save();
         }
     }
     /**
@@ -25,12 +25,11 @@ final class UserTable extends AbstractMigration
      */
     public function change(): void
     {
-        $table = $this->table('users');
-
-        $table->addColumn('email', 'string', ['comment' => 'Почта пользователя'])
-            ->addColumn('password', 'string', ['comment' => 'Пароль пользователя'])
+        $table = $this->table('roles');
+        
+        $table->addColumn('role', 'string', ['comment' => 'Роль пользователя'])
+            ->addColumn('role_level', 'integer', ['comment' => 'Числовой уровень доступа'])
             ->addTimestamps()
-            ->addColumn('last_at', 'datetime', ['comment' => 'Последнее посещение'])
             ->create();
     }
 }

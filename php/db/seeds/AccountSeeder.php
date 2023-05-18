@@ -15,24 +15,26 @@ class AccountSeeder extends AbstractSeed
      */
     public function run(): void
     {
-        $data = [
-            [
-                'name' => '',
-                'second_name' => '',
-                'patronymic' => '',
+        $faker = Faker\Factory::create('ru_RU');   
+
+        $data = [];
+
+        $user_role_ids = $this->fetchAll('SELECT id FROM user_role');
+        
+        $genders_ids = $this->fetchAll('SELECT id FROM genders');
+
+        for ($i = 0; $i < 50; $i++) {
+            array_push($data, [
+                'name' => $faker->firstName(),
+                'second_name' => $faker->lastName(),
+                'patronymic' => $faker->word(15),
+                'user_role_id' => $user_role_ids[array_rand($user_role_ids, 1)]['id'],
+                'gender_id' => $genders_ids[array_rand($genders_ids, 1)]['id'],
                 'userpic' => '/userpic/userpic.jpg',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
-            ],
-            [
-                'name' => '',
-                'second_name' => '',
-                'patronymic' => '',
-                'userpic' => '/userpic/userpic.jpg',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ]
-        ];
+            ]);
+        }
 
         $account = $this->table('accounts');
         $account->insert($data)->save();

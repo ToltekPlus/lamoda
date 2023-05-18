@@ -3,7 +3,7 @@
 
 use Phinx\Seed\AbstractSeed;
 
-class UserSeeder extends AbstractSeed
+class DesignSeeder extends AbstractSeed
 {
     /**
      * Run Method.
@@ -15,21 +15,18 @@ class UserSeeder extends AbstractSeed
      */
     public function run(): void
     {
-        
         $faker = Faker\Factory::create('ru_RU');
         $data = [];
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'phone' => $faker->phoneNumber(),
-                'password' => md5($faker->password()),
+                'design' => $faker->word(),
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-                'last_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s')
             ]) ;
         }
 
-        $user = $this->table('users');
-        $user->insert($data)->save();
+        $design = $this->table('designes');
+        $design->insert($data)->save();
     }
 }

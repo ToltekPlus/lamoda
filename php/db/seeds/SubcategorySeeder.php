@@ -3,7 +3,7 @@
 
 use Phinx\Seed\AbstractSeed;
 
-class UserSeeder extends AbstractSeed
+class SubcategorySeeder extends AbstractSeed
 {
     /**
      * Run Method.
@@ -15,21 +15,20 @@ class UserSeeder extends AbstractSeed
      */
     public function run(): void
     {
-        
         $faker = Faker\Factory::create('ru_RU');
         $data = [];
 
+        $categories_ids = $this->fetchAll('SELECT id FROM categories');
+
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'phone' => $faker->phoneNumber(),
-                'password' => md5($faker->password()),
+                'category_id' => $categories_ids[array_rand($categories_ids, 1)]['id'],
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-                'last_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s')
             ]) ;
         }
 
-        $user = $this->table('users');
-        $user->insert($data)->save();
+        $subcategory = $this->table('subcategories');
+        $subcategory->insert($data)->save();
     }
 }

@@ -3,7 +3,7 @@
 
 use Phinx\Seed\AbstractSeed;
 
-class UserSeeder extends AbstractSeed
+class ColorSeeder extends AbstractSeed
 {
     /**
      * Run Method.
@@ -15,21 +15,18 @@ class UserSeeder extends AbstractSeed
      */
     public function run(): void
     {
-        
         $faker = Faker\Factory::create('ru_RU');
         $data = [];
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'phone' => $faker->phoneNumber(),
-                'password' => md5($faker->password()),
+                'color' => $faker->word(),
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-                'last_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s')
             ]) ;
         }
 
-        $user = $this->table('users');
-        $user->insert($data)->save();
+        $color = $this->table('colors');
+        $color->insert($data)->save();
     }
 }
