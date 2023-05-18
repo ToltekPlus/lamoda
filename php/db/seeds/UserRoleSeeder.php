@@ -20,13 +20,12 @@ class UserRoleSeeder extends AbstractSeed
         $data = [];
 
         $users_ids = $this->fetchAll('SELECT id FROM users');
-
         $roles_ids = $this->fetchAll('SELECT id FROM roles');
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'users_id' => array_rand($users_ids, 1),
-                'roles_id' => array_rand($roles_ids, 1),
+                'user_id' => $users_ids[array_rand($users_ids, 1)]['id'],
+                'role_id' => $roles_ids[array_rand($roles_ids, 1)]['id'],
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

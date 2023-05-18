@@ -28,8 +28,8 @@ class AccountSeeder extends AbstractSeed
                 'name' => $faker->firstName(),
                 'second_name' => $faker->lastName(),
                 'patronymic' => $faker->word(15),
-                'user_role_id' => array_rand($user_role_ids, 1),
-                'gender_id' => array_rand($genders_ids, 1),
+                'user_role_id' => $user_role_ids[array_rand($user_role_ids, 1)]['id'],
+                'gender_id' => $genders_ids[array_rand($genders_ids, 1)]['id'],
                 'userpic' => '/userpic/userpic.jpg',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')

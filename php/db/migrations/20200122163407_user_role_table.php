@@ -31,7 +31,7 @@ final class UserRoleTable extends AbstractMigration
         $table->addColumn('user_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ пользователя'])
             ->addForeignKey('user_id', 'users', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
             ->addColumn('role_id', 'integer', ['null' => true, 'signed' => false, 'comment' => 'Ключ роли'])
-            ->addForeignKey('role_id', 'roles', 'id', ['delete' => 'SET_NULL', 'update' => 'NO_ACTION'])
+            ->addForeignKey('role_id', 'roles', 'id', ['update' => 'NO_ACTION'])
             ->addTimestamps()
             ->save();
     }

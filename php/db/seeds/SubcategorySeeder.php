@@ -22,7 +22,7 @@ class SubcategorySeeder extends AbstractSeed
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'categories_id' => array_rand($categories_ids, 1),
+                'category_id' => $categories_ids[array_rand($categories_ids, 1)]['id'],
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]) ;

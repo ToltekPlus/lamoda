@@ -16,7 +16,7 @@ class RoleSeeder extends AbstractSeed
     public function run(): void
     {
         // TODO добавить числовой уровень доступа
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < 1; $i++) {
         $data = [
             [
                 'role' => 'Administrator',

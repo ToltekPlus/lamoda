@@ -15,7 +15,7 @@ class GenderSeeder extends AbstractSeed
      */
     public function run(): void
     {
-        for ($i = 0; $i < 2; $i++) {$data = [
+        for ($i = 0; $i < 1; $i++) {$data = [
             [
                 'gender' => 'Male',
                 'created_at' => date('Y-m-d H:i:s'),

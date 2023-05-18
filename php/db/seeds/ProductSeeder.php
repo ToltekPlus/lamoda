@@ -27,12 +27,12 @@ class ProductSeeder extends AbstractSeed
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'genders_id' => array_rand($genders_ids, 1),
-                'subcategories_id' => array_rand($subcategories_ids, 1),
-                'materials_id' => array_rand($materials_ids, 1),
-                'companies_id' => array_rand($companies_ids, 1),
-                'styles_id' => array_rand($styles_ids, 1),
-                'design_colors_id' => array_rand($design_colors_ids, 1),
+                'gender_id' => $genders_ids[array_rand($genders_ids, 1)]['id'],
+                'subcategory_id' => $subcategories_ids[array_rand($subcategories_ids, 1)]['id'],
+                'material_id' => $materials_ids[array_rand($materials_ids, 1)]['id'],
+                'company_id' => $companies_ids[array_rand($companies_ids, 1)]['id'],
+                'style_id' => $styles_ids[array_rand($styles_ids, 1)]['id'],
+                'design_color_id' => $design_colors_ids[array_rand($design_colors_ids, 1)]['id'],
                 'description' => $faker->word(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')

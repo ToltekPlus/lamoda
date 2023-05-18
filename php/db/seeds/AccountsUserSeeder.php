@@ -25,8 +25,8 @@ class AccountsUserSeeder extends AbstractSeed
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'accounts_id' => array_rand($accounts_ids, 1),
-                'users_id' => array_rand($users_ids, 1),
+                'account_id' => $accounts_ids[array_rand($accounts_ids, 1)]['id'],
+                'user_id' => $users_ids[array_rand($users_ids, 1)]['id'],
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

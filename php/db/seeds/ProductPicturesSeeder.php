@@ -26,8 +26,8 @@ class ProductPicturesSeeder extends AbstractSeed
 
         for ($i = 0; $i < 50; $i++) {
             array_push($data, [
-                'products_id' => array_rand($products_ids, 1),
-                'pictures_id' => array_rand($pictures_ids, 1),
+                'product_id' => $products_ids[array_rand($products_ids, 1)]['id'],
+                'picture_id' => $pictures_ids[array_rand($pictures_ids, 1)]['id'],
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
