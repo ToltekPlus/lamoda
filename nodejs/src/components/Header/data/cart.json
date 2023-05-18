@@ -1,0 +1,12 @@
+{
+  "productsInCart": [
+    {
+      "product_id": 1,
+      "count": 5
+    },
+    {
+      "product_id": 3,
+      "count": 1
+    }
+  ]
+}
