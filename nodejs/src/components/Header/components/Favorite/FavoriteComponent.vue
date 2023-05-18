@@ -1,8 +1,6 @@
 <template>
   <li class="column is-4">
-    <router-link to="/favorite"
-      ><ion-icon name="heart-outline"></ion-icon
-    ></router-link>
+    <a href=""><ion-icon name="heart-outline"></ion-icon></a>
   </li>
 </template>
 

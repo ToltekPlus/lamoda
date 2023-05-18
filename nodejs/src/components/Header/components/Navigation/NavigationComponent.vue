@@ -1,7 +1,7 @@
 <template>
   <ul class="column is-4">
     <li v-for="(gender, index) in navigationList" :key="index">
-      <router-link :to="gender.link">{{ gender.text }}</router-link>
+      <a :href="gender.link">{{ gender.text }}</a>
     </li>
   </ul>
 </template>

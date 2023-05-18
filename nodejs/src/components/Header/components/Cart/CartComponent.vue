@@ -5,14 +5,15 @@
     </a>
     <div class="cart">
       <div class="cart-items" v-show="showCart">
+        <span @click="testing()">OLOLOLO</span>
         <a>
           <ion-icon name="close" @click="showCart = !showCart"></ion-icon>
         </a>
         <table class="cartTable">
           <tbody>
-            <tr>
-              <td v-for="(product, i) in cartList" :key="i">
-                {{ product }}
+            <tr v-if="list !== null">
+              <td v-for="(item, i) in list" :key="i">
+                {{ item }}
               </td>
             </tr>
           </tbody>
@@ -24,13 +25,28 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "CartComponent",
   props: ["cartList"],
   data() {
     return {
       showCart: false,
+      list: null,
     };
+  },
+  methods: {
+    async testing() {
+      axios
+        .get("http://localhost:8080")
+        .then((res) => {
+          this.list = res.data;
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
+    },
   },
 };
 </script>
