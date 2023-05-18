@@ -1,23 +1,16 @@
-# ALamoda
+# Описание работы с фронтендом
 
-## Project setup
+### Для начала установите все свои зависимости
 ```
 npm install
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
+### При возможной ошибки линтера рекомендуется запустить
 ```
 npm run lint
 ```
 
-### Routing
+### Работа с верткой и макетами
 
-1. Добавить PageView.vue в src/views
-2. Добавить import и export в src/views/main.js
-3. Добавить import и роут в src/router/index.js
-4. Добавить в нужное место `<router-link to='/page'>page</router-link>`
+### Общие правила работы с компонентами
+
+### Работа с VueX
