@@ -1,5 +1,7 @@
 FROM php:8.1-fpm
 
+RUN a2enmod rewrite
+
 #Update!
 RUN apt-get update
 

@@ -6,8 +6,11 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 require(__DIR__ . '/env.php');
 
+use App\Controller\HomeController;
+
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-    $r->addRoute('GET', '/', [\App\Controller\HomeController::class, 'index']);
+    $r->addRoute('GET', '/', [HomeController::class, 'index']);
+    $r->addRoute('GET', '/all', [HomeController::class, 'all']);
 });
 
 // Fetch method and URI from somewhere
@@ -31,7 +34,7 @@ switch ($routeInfo[0]) {
         var_dump('405');
         break;
     case FastRoute\Dispatcher::FOUND:
-        $class = new $routeInfo[1][0]();
+        $class = new $routeInfo[1][0];
         $method = $routeInfo[1][1];
         $class->$method();
         break;
