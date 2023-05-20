@@ -41,7 +41,7 @@ services:
     networks:
       - internal
     volumes:
-      - ./php/services/:/var/www/html
+      - ./php/:/var/www/html
       - /logs/php.log:/var/log/fpm-php.www.log
 
   db:
