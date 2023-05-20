@@ -1,16 +1,32 @@
 <?php
-//пример//
-//сначала создаем пустой массив под названием избранное: туда мы будем добвалять товары по клиу мыши(это уже будет реализация Java Script, именно про клик мыши), есть массив под названием продукты, там естественно находятся категории товаров, после этого, пишем команду, позволяющая перенести товар их списка товаров в избранное клиента.
-//после добавления товаров в массив "избранное" пишем команду, которая позволит клиенту увидеть список избранных товаров
-$favorites = [];
-$products = [
-'T-shirt',
-'Jeans',
-'Shoes',
-'Shorts',
-'Jersey'
-];
-array_push($favorites, 'Jersey', 'Shoes', 'T-shirt');
-foreach ($favorites as $list){
-echo $list. "<br>";
+//интерфейс, как требовал Сергей Павлович, в него входят функции добавления и удаления товара из избранного
+interface FavoritesInterface {
+public function add_to_favorites($product);
+public function remove_from_favorites($product);
 }
+//дальше сам класс избранного
+//добавление в избранное
+class Favorites implements FavoritesInterface {
+private $favorites = [];
+public function add_to_favorites($product) {
+if (!in_array($product, $this->favorites)){
+$this->favorites[] = $product;
+}
+}
+//удаление из избранного
+public function remove_from_favorites($product){
+$k = array_search($product, $this->favorites);
+if ($k !== false){
+unset($this->favorites[$key]);
+}
+}
+}
+$favorites = new Favorites();
+//добавляем товары
+$favorites->add_to_favorites("Мужская футболка белого цвета");
+$favorites->add_to_favorites("Худи черного цвета");
+$favorites->add_to_favorites("Кроссовки Puma белого цвета");
+$favorites->add_to_favorites("Кепка Adidas черного цвета");
+
+//удаляем товары
+$favorites->remove_from_favorites("Кепка Adidas черного цвета");
