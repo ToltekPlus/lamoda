@@ -26,11 +26,6 @@ docker-compose up -d
 docker-compose exec -it php bash
 ```
 
-- Войти в папку php
-```
-cd php
-```
-
 - Войти в папку services
 ```
 cd services
