@@ -13,14 +13,13 @@
       <ul class="columns">
         <user />
         <favorite />
-        <cart :cartList="cartList" />
+        <cart />
       </ul>
     </div>
   </header>
 </template>
 
 <script>
-import cart from "./data/cart.json";
 import genders from "./data/navigation.json";
 import Prods from "./data/testSearch.json";
 
@@ -35,7 +34,6 @@ export default {
   name: "HeaderComponent",
   data() {
     return {
-      cartList: cart,
       navigationList: genders,
       prodsList: Prods,
     };
