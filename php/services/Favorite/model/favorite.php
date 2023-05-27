@@ -1,4 +1,5 @@
 <?php
+use Database;
 class FavoriteDTO implements FavoriteDTOInterface {
     private PDO $db;
     

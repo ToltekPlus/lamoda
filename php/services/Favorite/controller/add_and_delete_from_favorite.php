@@ -6,7 +6,7 @@ class Favorite implements FavoriteInterface {
         $this->dto = $dto;
     }
 
-    public function add_to_favorite($product) {
+    public function add_to_favorite( string $product) {
         if (!in_array($product, $this->dto->getFavorite())) {
             $favorite = $this->dto->getFavorite();
             $favorite[] = $product;
@@ -14,7 +14,7 @@ class Favorite implements FavoriteInterface {
         }
     }
 
-    public function remove_from_favorite($product) {
+    public function remove_from_favorite( string $product) {
         $favorite = $this->dto->getFavorite();
         $k = array_search($product, $favorites);
 
